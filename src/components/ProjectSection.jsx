@@ -17,7 +17,7 @@ const projects = [
       "Full-featured MERN calendar app with user authentication and event scheduling.",
     image: "/projects/project2.png",
     tags: ["React", "Node.js", "MongoDB"],
-    demoUrl: "https://calendar-app-mern-backend.up.railway.app/",
+    demoUrl: "https://calendarapp-mern-backend.up.railway.app/",
     githubUrl: "https://github.com/iamjohangalvan/calendar-app",
   },
   {
