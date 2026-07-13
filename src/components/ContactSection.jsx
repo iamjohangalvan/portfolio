@@ -35,11 +35,11 @@ export const ContactSection = () => {
           Have a project in mind or want to collaborate? Feel free to reach out.
           I'm always open to new opportunities and collaborations.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="flex flex-col md:flex-row gap-12">
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
             <div className="space-y-6 justify-center">
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center">
                 <div className="p-3 rounded-full bg-primary/10">
                   {" "}
                 </div>
@@ -90,12 +90,6 @@ export const ContactSection = () => {
                 </a>
                 <a target="_blank" href="https://github.com/iamjohangalvan">
                   <Github />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://www.instagram.com/_johangalvan"
-                >
-                  <Instagram />
                 </a>
               </div>
             </div>
