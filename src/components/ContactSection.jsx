@@ -63,7 +63,7 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
+             <div className="flex items-center justify-center space-x-4">
                
                 <div>
                   <h4 className="font-medium"> Location</h4>
