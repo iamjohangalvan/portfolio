@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -30,33 +31,39 @@ export const Navbar = () => {
           : "bg-transparent"
       )}
     >
-      <div className="container flex items-center justify-between">
+     <div className="container mx-auto flex items-center justify-between px-4">
+        
         <a className="text-lg font-bold text-primary flex items-center">
           <span className="relative z-10">
             <span className="text-glow text-foreground">Johan Galvan</span>{" "}
             Portfolio
           </span>
         </a>
-        {/* desktop navigation */}
-        <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 font-bold hover:text-primary transition-colors duration-300"
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-        {/* mobile navigation */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
+        <div className="flex items-center gap-4">
+  {/* Desktop navigation */}
+  <div className="hidden md:flex space-x-8">
+    {navItems.map((item, key) => (
+      <a
+        key={key}
+        href={item.href}
+        className="text-foreground/80 font-bold hover:text-primary transition-colors duration-300"
+      >
+        {item.name}
+      </a>
+    ))}
+  </div>
+
+  <ThemeToggle />
+
+  {/* Mobile menu button */}
+  <button
+    onClick={() => setIsMenuOpen((prev) => !prev)}
+    className="md:hidden p-2 text-foreground"
+    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+  >
+    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+  </button>
+</div>
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
