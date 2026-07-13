@@ -31,38 +31,30 @@ export const Navbar = () => {
           : "bg-transparent"
       )}
     >
-     <div className="container mx-auto flex items-center justify-between px-4">
-        
-        <a className="text-lg font-bold text-primary flex items-center">
-          <span className="relative z-10">
-            <span className="text-glow text-foreground">Johan Galvan</span>{" "}
-            Portfolio
-          </span>
+    <div className="container mx-auto px-4 flex items-center justify-between">
+  {/* Logo */}
+  <a className="text-lg font-bold">
+    Johan Galvan Portfolio
+  </a>
+
+  {/* Right side */}
+  <div className="flex items-center gap-6">
+    <div className="hidden md:flex items-center gap-8">
+      {navItems.map((item) => (
+        <a key={item.name} href={item.href}>
+          {item.name}
         </a>
-        <div className="flex items-center gap-4">
-  {/* Desktop navigation */}
-  <div className="hidden md:flex space-x-8">
-    {navItems.map((item, key) => (
-      <a
-        key={key}
-        href={item.href}
-        className="text-foreground/80 font-bold hover:text-primary transition-colors duration-300"
-      >
-        {item.name}
-      </a>
-    ))}
-  </div>
+      ))}
+    </div>
 
-  <ThemeToggle />
+    <ThemeToggle />
 
-  {/* Mobile menu button */}
-  <button
-    onClick={() => setIsMenuOpen((prev) => !prev)}
-    className="md:hidden p-2 text-foreground"
-    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-  >
-    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-  </button>
+    <button
+      className="md:hidden p-2"
+      onClick={() => setIsMenuOpen((prev) => !prev)}
+    >
+      {isMenuOpen ? <X /> : <Menu />}
+    </button>
 </div>
         <div
           className={cn(
