@@ -6,7 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
-  { name: "Skils", href: "#skils" },
+  { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
@@ -22,6 +22,13 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+  document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isMenuOpen]);
   return (
     <nav
       className={cn(
@@ -31,31 +38,38 @@ export const Navbar = () => {
           : "bg-transparent"
       )}
     >
-    <div className="container mx-auto px-4 flex items-center justify-between">
+    <div className="container mx-auto px-4 h-16 flex items-center justify-between">
   {/* Logo */}
-  <a className="text-lg font-bold">
-    Johan Galvan Portfolio
+  <a
+    href="#hero"
+    className="text-lg font-bold text-primary"
+  >
+    <span className="text-foreground">Johan Galvan</span> Portfolio
   </a>
 
-  {/* Right side */}
-  <div className="flex items-center gap-6">
-    <div className="hidden md:flex items-center gap-8">
-      {navItems.map((item) => (
-        <a key={item.name} href={item.href}>
-          {item.name}
-        </a>
-      ))}
-    </div>
+  {/* Desktop */}
+  <div className="hidden md:flex items-center gap-8">
+    {navItems.map((item) => (
+      <a
+        key={item.name}
+        href={item.href}
+        className="text-foreground/80 hover:text-primary transition-colors"
+      >
+        {item.name}
+      </a>
+    ))}
 
     <ThemeToggle />
+  </div>
 
-    <button
-      className="md:hidden p-2"
-      onClick={() => setIsMenuOpen((prev) => !prev)}
-    >
-      {isMenuOpen ? <X /> : <Menu />}
-    </button>
-</div>
+  {/* Mobile button */}
+  <button
+    onClick={() => setIsMenuOpen(true)}
+    className="md:hidden p-2"
+  >
+    <Menu size={24} />
+  </button>
+
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
